@@ -19,6 +19,7 @@ on	KEYWORD2
 pushed	KEYWORD2
 released	KEYWORD2
 longPress	KEYWORD2
+isLongPressed	KEYWORD2
 doubleClick	KEYWORD2
 singleClick	KEYWORD2
 setPushedCallback	KEYWORD2

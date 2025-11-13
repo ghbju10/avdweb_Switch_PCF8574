@@ -55,6 +55,7 @@ public:
     bool pushed(); // will be refreshed by poll()
     bool released(); // will be refreshed by poll()
     bool longPress(); // will be refreshed by poll()
+    bool isLongPressed(); // will be refreshed by poll()
     bool doubleClick(); // will be refreshed by poll()
     bool singleClick(); // will be refreshed by poll()
 

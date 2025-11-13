@@ -60,7 +60,11 @@ It returns `true` if a push button was released (switched towards the off positi
 
 ### `longPress()`
 
-It returns `true` if a push button is pressed longer than `300ms` (by default). Note that a `longPress()` always will be preceded by `pushed()` from the first push.
+It returns `true` if a push button was pressed longer than `300ms` (by default). Note that a `longPress()` always will be preceded by `pushed()` from the first push.
+
+### `isLongPressed()`
+
+It returns `true` if the conditions for `longPress()` were true and the push button is still being held down.
 
 ### `doubleClick()`
 

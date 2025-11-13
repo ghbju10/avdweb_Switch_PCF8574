@@ -94,7 +94,7 @@
 ********************************************************************************
 ......................................DOUBLE CLICK..............................
 
-                           __________         ______
+                         __________         ______
  debounced      ________|          |_______|      |_____________________________
 
  poll          ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
@@ -263,6 +263,8 @@ bool Switch::pushed() { return _switched && !(debounced ^ polarity); }
 bool Switch::released() { return _switched && (debounced ^ polarity); }
 
 bool Switch::longPress() { return _longPress; }
+
+bool Switch::isLongPressed() { return longPressDisable; }
 
 bool Switch::doubleClick() { return _doubleClick; }
 
