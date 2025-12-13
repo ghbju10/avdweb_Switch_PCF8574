@@ -331,6 +331,12 @@ Please perform formatting before committing the code.
 clang-format -i src/*.* examples/**/*.ino
 ```
 
+For better compatibility use the [`arduino-lint`](https://github.com/arduino/arduino-lint) program:
+
+```sh
+arduino-lint --library-manager update --compliance strict
+```
+
 ## Credits
 
 Thanks to the contributors for making this library great
@@ -356,7 +362,7 @@ Thanks to the contributors for making this library great
 
 Copyright (C) 2012-2024 Albert van Dalen <http://www.avdweb.nl>
 
-Copyright (C) 2024 Abhijit Bose (aka. Boseji) :contributor:
+Copyright (C) 2024-2026 Abhijit Bose (aka. Boseji) :contributor:
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 

@@ -634,7 +634,7 @@ the "copyright" line and a pointer to where the full notice is found.
     Switch - Arduino switch and button library with Short/Long Press, 
     Double Click and Beep.
     Copyright (C) 2012-2024 Albert van Dalen <http://www.avdweb.nl>
-    Copyright (C) 2024 Abhijit Bose (aka. Boseji)
+    Copyright (C) 2024-2026 Abhijit Bose (aka. Boseji)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -655,7 +655,7 @@ Also add information on how to contact you by electronic and paper mail.
 notice like this when it starts in an interactive mode:
 
     Switch Copyright (C) 2012-2024 Albert van Dalen and
-    Copyright (C) 2024 Abhijit Bose (aka. Boseji)
+    Copyright (C) 2024-2026 Abhijit Bose (aka. Boseji)
     This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
     This is free software, and you are welcome to redistribute it
     under certain conditions; type `show c' for details.
