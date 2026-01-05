@@ -40,12 +40,17 @@
 #define AVDWEB_SWITCH_H
 
 #include <Arduino.h>
+#include <PCF8574.h>
 
 typedef void (*switchCallback_t)(void*);
 
 class Switch {
 public:
     Switch(byte _pin, byte PinMode = INPUT_PULLUP, bool polarity = LOW,
+        unsigned long debouncePeriod = 50, unsigned long longPressPeriod = 300,
+        unsigned long doubleClickPeriod = 250,
+        unsigned long deglitchPeriod = 10);
+    Switch(PCF8574& _pcf, byte _pin, bool polarity = LOW,
         unsigned long debouncePeriod = 50, unsigned long longPressPeriod = 300,
         unsigned long doubleClickPeriod = 250,
         unsigned long deglitchPeriod = 10);
@@ -81,6 +86,7 @@ protected:
 
     unsigned long deglitchTime, switchedTime, pushedTime, releasedTime, ms;
     const byte pin;
+    PCF8574* pcf = nullptr;
     const bool polarity;
     bool input, lastInput, equal, deglitched, debounced, _switched, _longPress,
         longPressDisable, _doubleClick, _singleClick, singleClickDisable;

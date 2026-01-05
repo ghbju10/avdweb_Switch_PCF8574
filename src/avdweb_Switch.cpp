@@ -160,7 +160,8 @@ Switch::Switch(byte _pin, byte PinMode, bool polarity,
     , longPressPeriod(longPressPeriod)
     , doubleClickPeriod(doubleClickPeriod)
     , pin(_pin)
-    , polarity(polarity)
+    , pcf(nullptr) 
+    , polarity(polarity)   
 {
     pinMode(pin, PinMode);
     switchedTime = millis();
@@ -169,9 +170,32 @@ Switch::Switch(byte _pin, byte PinMode, bool polarity,
     poll();
 }
 
+// PCF8574 Konstruktor
+Switch::Switch(PCF8574& _pcfRef, byte _pin, bool polarity,
+    unsigned long debouncePeriod, unsigned long longPressPeriod,
+    unsigned long doubleClickPeriod, unsigned long deglitchPeriod)
+    : deglitchPeriod(deglitchPeriod)
+    , debouncePeriod(debouncePeriod)
+    , longPressPeriod(longPressPeriod)
+    , doubleClickPeriod(doubleClickPeriod)
+    , pin(_pin)
+    , pcf(&_pcfRef)
+    , polarity(polarity)
+{
+    switchedTime = millis();
+    debounced = pcf->read(pin); 
+    singleClickDisable = true;
+    poll();
+}
+
 bool Switch::poll()
 {
-    input = digitalRead(pin);
+    if (pcf) {
+        input = pcf->read(pin); // Lesen vom PCF
+    } else {
+        input = digitalRead(pin); // Lesen vom Arduino Pin
+    }
+    
     ms = millis();
     return process();
 }
