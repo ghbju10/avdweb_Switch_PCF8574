@@ -23,7 +23,7 @@ Declare each switch or button, by indicating its GPIO number:
 
 #include <Wire.h>
 #include <PCF8574.h>
-#include <avdweb_Switch_PCF8574.h>
+#include <avdweb_Switch.h>
 
 // I2C Pins
 #define I2C_SDA 3   // GPIO3
