@@ -25,6 +25,13 @@ Declare each switch or button, by indicating its GPIO number:
 #include <PCF8574.h>
 #include <avdweb_Switch_PCF8574.h>
 
+// I2C Pins
+#define I2C_SDA 3   // GPIO3
+#define I2C_SCL 2   // GPIO2
+
+// PCF8574
+#define PCF_ADDRESS 0x20
+
 PCF8574 pcf(PCF_ADDRESS);
 Switch sw1 = Switch(pcf, 1);
 bool sw1State = false;
