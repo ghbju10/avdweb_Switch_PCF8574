@@ -19,12 +19,51 @@ For a complete description see:
 ## Using the Switch library
 
 Declare each switch or button, by indicating its GPIO number:
-
 ```c
-Switch buttonGND = Switch(4); // GPIO 4
-```
 
-The library sets GPIO in input mode with an internal pull-up resistor by default. The constructor accepts several arguments including the particular input mode (e.g. without pull-up), whether voltage level high must be interpreted as on or off (argument `polarity` must indicate the pushed voltage level), and the duration of the time periods that define the behavior.
+#include <Wire.h>
+#include <PCF8574.h>
+#include <avdweb_Switch_PCF8574.h>
+
+PCF8574 pcf(PCF_ADDRESS);
+Switch sw1 = Switch(pcf, 1);
+bool sw1State = false;
+
+[...]
+
+void toggleCallbackFunction(void* param){
+    char* data = (char*)param; 
+    int id = data[0] - '0';
+    int state = data[2] - '0';
+
+	// pressed
+    if (id == 1 && state == 1 && sw1State ){
+		// OFF    
+        sw1State=!sw1State;
+        return;
+    }
+	// released
+    else if (id == 1 && state == 1 && !sw6State )
+    {
+      // OFF
+      sw1State=!sw1State;
+      return;
+    }    
+}
+
+void setup(){
+  Wire.begin(I2C_SDA, I2C_SCL);
+  Wire.setClock(100000);
+  pcf.begin();
+  sw1.setPushedCallback(&toggleCallbackFunction, (void*)"sw1:1");
+  sw1.setReleasedCallback(&toggleCallbackFunction, (void*)"sw1:0");
+}
+
+void loop(){
+	sw1.poll();
+}
+
+```
 
 All switches have to be repeatedly polled individually to update the status. This is usually done in the `loop()` function.
 
